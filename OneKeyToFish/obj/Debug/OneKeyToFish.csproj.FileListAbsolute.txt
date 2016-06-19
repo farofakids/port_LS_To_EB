@@ -1,0 +1,15 @@
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\OneKeyToFish.exe.config
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\obj\Debug\OneKeyToFish.csprojResolveAssemblyReference.cache
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\OneKeyToFish.exe
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\OneKeyToFish.pdb
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\EloBuddy.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\EloBuddy.SDK.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\SharpDX.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\Newtonsoft.Json.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\bin\Release\EloBuddy.Sandbox.dll
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\obj\Debug\OneKeyToFish.exe
+C:\Users\Bruno_PC\Desktop\OneKeyToFish\obj\Debug\OneKeyToFish.pdb
+C:\Users\Bruno_PC\Documents\GitHub\port_LS_To_EB\OneKeyToFish\bin\Release\OneKeyToFish.exe.config
+C:\Users\Bruno_PC\Documents\GitHub\port_LS_To_EB\OneKeyToFish\obj\Debug\OneKeyToFish.exe
+C:\Users\Bruno_PC\Documents\GitHub\port_LS_To_EB\OneKeyToFish\obj\Debug\OneKeyToFish.pdb
