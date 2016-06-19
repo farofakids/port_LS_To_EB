@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Events;
@@ -22,13 +23,14 @@ namespace OneKeyToFish
         private static Vector3? LastHarassPos { get; set; }
         private static AIHeroClient DrawTarget { get; set; }
         private static Geometry.Polygon.Rectangle RRectangle { get; set; }
+        private static readonly HpBarIndicator Indicator = new HpBarIndicator();
 
         private static void Main(string[] args)
         {
             Loading.OnLoadingComplete += GameOnOnGameLoad;
         }
 
-        #region OneKeyToFish :: Menu
+        //#region OneKeyToFish :: Menu
 
         private static void CreateMenu()
         {
@@ -77,21 +79,22 @@ namespace OneKeyToFish
             drawMenu.Add("DrawE", new CheckBox("Draw E"));
             drawMenu.Add("DrawR", new CheckBox("Draw R"));
             drawMenu.Add("DrawRPred", new CheckBox("Draw R Prediction"));
+            drawMenu.Add("Dind", new CheckBox("Draw Damage Indicator"));
 
         }
 
-        #endregion OneKeyToFish :: Menu
+        //#endregion OneKeyToFish :: Menu
 
-        #region Spells
+        //#region Spells
 
         private static Spell.Targeted Q { get; set; }
         private static Spell.Active W { get; set; }
         private static Spell.Skillshot E { get; set; }
         private static Spell.Skillshot R { get; set; }
 
-        #endregion Spells
+        //#endregion Spells
 
-        #region GameLoad
+        //#region GameLoad
 
         private static void GameOnOnGameLoad(EventArgs args)
         {
@@ -116,11 +119,28 @@ namespace OneKeyToFish
             RRectangle = new Geometry.Polygon.Rectangle(Player.Position, Player.Position, R.Width);
 
             Game.OnTick += GameOnOnUpdate;
-            //Game.OnUpdate += GameOnOnUpdate;
             Obj_AI_Base.OnProcessSpellCast += ObjAiBaseOnOnProcessSpellCast;
             Drawing.OnDraw += DrawingOnOnDraw;
+            Drawing.OnEndScene += Drawing_OnEndScene;
 
             Chat.Print("<font color=\"#7CFC00\"><b>OneKeyToFish:</b></font> Loaded");
+        }
+
+        private static void Drawing_OnEndScene(EventArgs args)
+        {
+            foreach (
+                     var enemy in
+                        ObjectManager.Get<AIHeroClient>()
+                        .Where(ene => ene.IsValidTarget() && ene.IsEnemy && !ene.IsZombie))
+            {
+                if (drawMenu["Dind"].Cast<CheckBox>().CurrentValue)
+                {
+                    Indicator.unit = enemy;
+                    Indicator.drawDmg(DamageToUnit(enemy), new ColorBGRA(255, 204, 0, 170));
+                    
+                }
+
+            }
         }
 
         private static void DrawingOnOnDraw(EventArgs args)
@@ -152,10 +172,11 @@ namespace OneKeyToFish
             }
         }
 
-
         private static float DamageToUnit(AIHeroClient target)
         {
             var damage = 0d;
+
+            damage += Player.GetAutoAttackDamage(target);
 
             if (Q.IsReady())
             {
@@ -214,9 +235,9 @@ namespace OneKeyToFish
 
         public static bool JumpBack { get; set; }
 
-        #endregion GameLoad
+        //#endregion GameLoad
 
-        #region Update
+        //#region Update
 
         private static void GameOnOnUpdate(EventArgs args)
         {
@@ -359,9 +380,8 @@ namespace OneKeyToFish
             }
         }
 
-        #endregion Update
-
-        
+        //#endregion Update
+       
         public static bool UseQCombo { get { return comboMenu["UseQCombo"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseWCombo { get { return comboMenu["UseWCombo"].Cast<CheckBox>().CurrentValue; } }
         public static bool UseECombo { get { return comboMenu["UseECombo"].Cast<CheckBox>().CurrentValue; } }
