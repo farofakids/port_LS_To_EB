@@ -7,7 +7,6 @@
 
     internal class Program
     {
-        #region Methods
 
         private static void GameOnOnGameLoad(EventArgs args)
         {
@@ -22,6 +21,5 @@
             Loading.OnLoadingComplete += GameOnOnGameLoad;
         }
 
-        #endregion
     }
 }
