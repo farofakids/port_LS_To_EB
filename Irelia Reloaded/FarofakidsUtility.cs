@@ -57,5 +57,6 @@ namespace Irelia_Reloaded
             public static void Initialize() { }
             public static void Shutdown() { }
         }
+
     }
 }

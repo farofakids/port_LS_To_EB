@@ -87,13 +87,13 @@
             Chat.Print("<font color=\"#7CFC00\"><b>Irelia Reloaded:</b></font> Loaded");
 
             // Setup Dmg Indicator
-            FarofakidsUtility.HpBarDamageIndicator.DamageToUnit = DamageToUnit;
-            FarofakidsUtility.HpBarDamageIndicator.Enabled = true;
+          //  FarofakidsUtility.HpBarDamageIndicator.DamageToUnit = DamageToUnit; no work
+          //  FarofakidsUtility.HpBarDamageIndicator.Enabled = true;    no work
             
 
             // Subscribe to needed events
-           // Game.OnUpdate += Game_OnGameUpdate;
-                Game.OnTick += Game_OnGameUpdate;
+            // Game.OnUpdate += Game_OnGameUpdate;
+            Game.OnTick += Game_OnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
             FarofakidsUtility.AntiGapcloser.OnEnemyGapcloser += AntiGapcloserOnOnEnemyGapcloser;
             Interrupter.OnInterruptableSpell += InterrupterOnOnPossibleToInterrupt;
