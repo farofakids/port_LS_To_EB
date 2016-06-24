@@ -37,6 +37,7 @@ namespace Mid_or_Feed_Malzahar
             E = new Spell.Targeted(SpellSlot.E, 650);
             R = new Spell.Targeted(SpellSlot.R, 700);
 
+            CreateMenu();
             Chat.Print("Malzahar loaded.");
 
             Game.OnTick += Game_OnUpdate;
@@ -129,8 +130,8 @@ namespace Mid_or_Feed_Malzahar
 
         if (DrawQ) Circle.Draw(Q.IsReady() ? Color.Aqua : Color.Red, Q.Range, Player.Instance.Position);
         if (DrawW) Circle.Draw(W.IsReady() ? Color.Aqua : Color.Red, W.Range, Player.Instance.Position);
-        if (DrawE) Circle.Draw(W.IsReady() ? Color.Aqua : Color.Red, E.Range, Player.Instance.Position);
-        if (DrawR) Circle.Draw(W.IsReady() ? Color.Aqua : Color.Red, R.Range, Player.Instance.Position);
+        if (DrawE) Circle.Draw(E.IsReady() ? Color.Aqua : Color.Red, E.Range, Player.Instance.Position);
+        if (DrawR) Circle.Draw(R.IsReady() ? Color.Aqua : Color.Red, R.Range, Player.Instance.Position);
 
         }
 
