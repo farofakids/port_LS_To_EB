@@ -73,6 +73,10 @@
             {
                 IgniteSlot = new Spell.Targeted(ObjectManager.Player.GetSpellSlotFromName("SummonerDot"), 600);
             }
+            else
+            {
+                IgniteSlot = null;
+            }
             // Add skillshots
 
 
@@ -253,7 +257,7 @@ ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Q).SData.Mana * 2)
             }
 
             if (useIgnite && target != null && target.IsValidTarget(600)
-                && (IgniteSlot.IsReady()
+                && (IgniteSlot != null && IgniteSlot.IsReady()
                     && Player.GetSummonerSpellDamage(target, DamageLibrary.SummonerSpells.Ignite) > target.Health))
             {
                 IgniteSlot.Cast(target);
@@ -540,7 +544,7 @@ ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Q).SData.Mana * 2)
                 }
             }
 
-            if (useIgnite && IgniteSlot.IsReady())
+            if (IgniteSlot != null && useIgnite && IgniteSlot.IsReady())
             {
                 var bestTarget =
                     ObjectManager.Get<AIHeroClient>()
